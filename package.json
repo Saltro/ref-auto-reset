@@ -1,0 +1,21 @@
+{
+  "name": "ref-auto-reset",
+  "version": "0.1.0",
+  "description": "A Vue composable make ref auto reset",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "build": "esbuild src/index.ts --outfile=dist/index.js --minify --sourcemap",
+    "postbuild": "tsc --emitDeclarationOnly"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "Saltro Ping<https://github.com/Saltro>",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.17.10",
+    "typescript": "^4.9.5",
+    "vue": "^3.2.47"
+  }
+}
