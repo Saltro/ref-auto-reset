@@ -1,6 +1,6 @@
 {
   "name": "ref-auto-reset",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A Vue composable make ref auto reset",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
