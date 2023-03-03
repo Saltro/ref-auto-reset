@@ -1,10 +1,13 @@
 {
   "name": "ref-auto-reset",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A Vue composable make ref auto reset",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
-  "files": ["lib", "types"],
+  "files": [
+    "lib",
+    "types"
+  ],
   "scripts": {
     "build": "esbuild src/index.ts --outfile=lib/index.js --minify --sourcemap",
     "postbuild": "tsc --emitDeclarationOnly"
