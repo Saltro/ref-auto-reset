@@ -4,8 +4,9 @@
   "description": "A Vue composable make ref auto reset",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
+  "files": ["lib", "types"],
   "scripts": {
-    "build": "esbuild src/index.ts --outfile=dist/index.js --minify --sourcemap",
+    "build": "esbuild src/index.ts --outfile=lib/index.js --minify --sourcemap",
     "postbuild": "tsc --emitDeclarationOnly"
   },
   "keywords": [
