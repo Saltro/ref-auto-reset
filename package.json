@@ -6,7 +6,8 @@
   "types": "types/index.d.ts",
   "files": [
     "lib",
-    "types"
+    "types",
+    "README.md"
   ],
   "scripts": {
     "build": "esbuild src/index.ts --outfile=lib/index.js --minify --sourcemap",
