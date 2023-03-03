@@ -1,6 +1,6 @@
-import { customRef, watch } from 'vue';
+import { Ref, customRef, watch } from 'vue';
 
-export function refWithReset<T>(
+export function refAutoReset<T>(
   value: T,
   sources: any,
   defaultValue?: T | (() => T),
@@ -9,14 +9,16 @@ export function refWithReset<T>(
     return typeof t === 'function';
   }
 
+  function getDefaultValue() {
+    if (typeof defaultValue === 'undefined') return value;
+    if (isValidFunction(defaultValue)) return defaultValue();
+    return defaultValue;
+  }
+
   let refValue = value;
-  return customRef<T>((track, trigger) => {
+  const res: Ref<T> & { reset: () => T } = customRef<T>((track, trigger) => {
     watch(sources, () => {
-      refValue = typeof defaultValue === 'undefined'
-        ? value
-        : isValidFunction(defaultValue)
-          ? defaultValue()
-          : defaultValue;
+      refValue = getDefaultValue();
       trigger();
     });
     return {
@@ -29,6 +31,14 @@ export function refWithReset<T>(
         trigger();
       },
     };
-  });
+  }) as unknown as Ref<T> & { reset: () => T };
+  res.reset = function () {
+    this.value = getDefaultValue();
+    return this.value;
+  };
+  return res;
 }
 
+export function refWithReset<T>(value: T, defaultValue?: T | (() => T)) {
+  return refAutoReset(value, [], defaultValue);
+}
